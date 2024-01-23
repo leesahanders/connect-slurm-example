@@ -1,13 +1,19 @@
-# connect-slurm-example
+# Slurmathon 2024-01-23:24
 
-A subset of customers request options for leveraging Connect with Slurm. 
+## Goal 
 
-- What do customers want for an integration with Slurm for the Connect product? (Shiny apps, remote submitting, replacing k8s with slurm, etc)
-- What are the current ways to achieve what customers are wanting?
+> Build a HPC cluster and Connect to explore the Connect <--> HPC integration, cf.
 
-Internal reference: <https://positpbc.atlassian.net/wiki/spaces/SE/pages/544538869/2023-12-19+Connect+with+Slurm> 
+> Other material that may be helpful here is GitHub - michaelmayer2/penguins-hpc: Penguins glm goes HPC R/Shiny Apps with HPC , clustermq – example [Asynchronous Shiny apps](https://cran.r-project.org/web/packages/crew/vignettes/shiny.html)  (the latter could be enriched with crew.cluster
 
-# Requirements
+## TODO
+
+- [x] Example that works on Workbench 
+- [] Example that works with Connect deployed on the slurm head node 
+- [] Example that works with Connect deployed on a separate server
+- [] progress bar
+
+## Requirements
 
 Make sure Connect server can submit to slurm cluster, at a minimum these are needed: 
 
@@ -19,7 +25,7 @@ Make sure Connect server can submit to slurm cluster, at a minimum these are nee
 
 > The easiest option, if possible, is to install Connect on the slurm headnode. This way the above requirements are already in place. 
 
-# Parallelization resources 
+## Parallelization resources 
 
 Michael's workshop: <https://luwidmer.github.io/fastR-website> and early attempt of building Connect app with remote submission to hpc cluster: <https://github.com/michaelmayer2/penguins-hpc> and in depth applied useage of clustermq: <https://michaelmayer.quarto.pub/clustermq/>
 
@@ -38,7 +44,7 @@ Recommended packages:
 
 Bias towards recommending clustermq as it has less overhead
 
-# Mental model: 
+## Mental model: 
 
 - Set appropriate permissions, install requirements
 - Run content on Connect
@@ -48,9 +54,9 @@ Bias towards recommending clustermq as it has less overhead
 - Use different parallelization tools: clustermq, future, batchtools, crew.cluster
 
 
-# Set up Connect on Slurm head node 
+## Set up Connect on Slurm head node 
 
-## Setup
+### Setup
 
 Log in to AWS
 ```
@@ -92,7 +98,7 @@ You can use passwordless `sudo -s` to become root and then `su - ubuntu` to beco
 
 (optional) Exit the ssh session: `exit`
 
-## Installation 
+### Installation 
 
 Get your operating system version: 
 
@@ -193,6 +199,9 @@ RegisterOnFirstLogin = true
 ; [Application]
 ; RunAsCurrentUser = true
 
+;[Default Users]
+;[Authorization]
+
 [RPackageRepository "CRAN"]
 URL = "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"
 
@@ -221,7 +230,7 @@ sudo systemctl status rstudio-connect 2>&1 | tee status.txt
 
 Access your Connect instance at: `<your ip address>:3939`
 
-## Troubleshooting
+### Troubleshooting
 
 Slurm 
 
@@ -264,16 +273,30 @@ Restarting Workbench: After making a change manually to files on the server, bri
 - Reset the cluster (run on any one node): sudo rstudio-server reset-cluster
 - Debugging: sudo rstudio-server list-nodes
 
-# R Examples 
 
-## shiny-app 
+## Slurm interaction 
 
-## quarto-report 
+```
+Scontrol show job 38 
+```
 
-# TODO
+Kill job as rstudio user or slurm admin
 
-- Example that works on Workbench 
-- Example that works with Connect deployed on the slurm head node 
-- Example that works with Connect deployed on a separate server
-- progress bar
+```
+Sudo -s 
+sudo -u rstudio scancel 33
+Sudo -s 
+su - rstudio
+scancel 34 (jobid)
+Exit
+Exit # -> brings back to ubuntu 
+```
+
+From workbench: 
+
+```
+env | grep SINGU
+```
+
+
 
