@@ -1,0 +1,6 @@
+default:
+  cmq_method: "slurm"
+
+rsconnect:
+  cmq_method: "ssh"
+  cmq_remote_host: "mm@18.202.222.234"
