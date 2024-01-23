@@ -179,7 +179,7 @@ NoWarning = true
 Provider = "pam"
 
 [PAM]
-RegisterOnFirstLogin = false
+RegisterOnFirstLogin = true
 ; These default values should be adjusted
 ; accord to the level of PAM support desired:
 ;Service = "rstudio-connect"
