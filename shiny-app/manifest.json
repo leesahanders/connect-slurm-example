@@ -10,6 +10,29 @@
     "has_parameters": false
   },
   "packages": {
+    "BH": {
+      "Source": "CRAN",
+      "Repository": "https://packagemanager.posit.co/cran/2023-12-30",
+      "description": {
+        "Package": "BH",
+        "Type": "Package",
+        "Title": "Boost C++ Header Files",
+        "Version": "1.81.0-1",
+        "Date": "2023-01-17",
+        "Author": "Dirk Eddelbuettel, John W. Emerson and Michael J. Kane",
+        "Maintainer": "Dirk Eddelbuettel <edd@debian.org>",
+        "Description": "Boost provides free peer-reviewed portable C++ source \n libraries.  A large part of Boost is provided as C++ template code\n which is resolved entirely at compile-time without linking.  This \n package aims to provide the most useful subset of Boost libraries \n for template use among CRAN packages. By placing these libraries in \n this package, we offer a more efficient distribution system for CRAN \n as replication of this code in the sources of other packages is \n avoided. As of release 1.81.0-0, the following Boost libraries are\n included: 'accumulators' 'algorithm' 'align' 'any' 'atomic' 'beast'\n 'bimap' 'bind' 'circular_buffer' 'compute' 'concept' 'config'\n 'container' 'date_time' 'detail' 'dynamic_bitset' 'exception'\n 'flyweight' 'foreach' 'functional' 'fusion' 'geometry' 'graph' 'heap'\n 'icl' 'integer' 'interprocess' 'intrusive' 'io' 'iostreams'\n 'iterator' 'lambda2' 'math' 'move' 'mp11' 'mpl' 'multiprecision'\n 'numeric' 'pending' 'phoenix' 'polygon' 'preprocessor' 'process'\n 'propery_tree' 'random' 'range' 'scope_exit' 'smart_ptr' 'sort'\n 'spirit' 'tuple' 'type_traits' 'typeof' 'unordered' 'url' 'utility'\n 'uuid'.",
+        "License": "BSL-1.0",
+        "URL": "https://github.com/eddelbuettel/bh,\nhttps://dirk.eddelbuettel.com/code/bh.html",
+        "BugReports": "https://github.com/eddelbuettel/bh/issues",
+        "NeedsCompilation": "no",
+        "Packaged": "2023-01-17 22:52:33 UTC; edd",
+        "Repository": "RSPM",
+        "Date/Publication": "2023-01-22 08:20:02 UTC",
+        "Encoding": "UTF-8",
+        "Built": "R 4.3.0; ; 2023-04-21 22:20:53 UTC; unix"
+      }
+    },
     "MASS": {
       "Source": "CRAN",
       "Repository": "https://packagemanager.posit.co/cran/2023-12-30",
@@ -142,6 +165,34 @@
         "Repository": "RSPM",
         "Date/Publication": "2023-07-06 07:33:14 UTC",
         "Built": "R 4.3.0; x86_64-pc-linux-gnu; 2023-07-09 22:59:12 UTC; unix"
+      }
+    },
+    "anytime": {
+      "Source": "CRAN",
+      "Repository": "https://packagemanager.posit.co/cran/2023-12-30",
+      "description": {
+        "Package": "anytime",
+        "Type": "Package",
+        "Title": "Anything to 'POSIXct' or 'Date' Converter",
+        "Version": "0.3.9",
+        "Date": "2020-08-26",
+        "Author": "Dirk Eddelbuettel",
+        "Maintainer": "Dirk Eddelbuettel <edd@debian.org>",
+        "Description": "Convert input in any one of character, integer, numeric, factor,\n or ordered type into 'POSIXct' (or 'Date') objects, using one of a number of\n predefined formats, and relying on Boost facilities for date and time parsing.",
+        "URL": "http://dirk.eddelbuettel.com/code/anytime.html",
+        "BugReports": "https://github.com/eddelbuettel/anytime/issues",
+        "License": "GPL (>= 2)",
+        "Encoding": "UTF-8",
+        "Depends": "R (>= 3.2.0)",
+        "Imports": "Rcpp (>= 0.12.9)",
+        "LinkingTo": "Rcpp (>= 0.12.9), BH",
+        "Suggests": "tinytest (>= 1.0.0), gettz",
+        "RoxygenNote": "6.0.1",
+        "NeedsCompilation": "yes",
+        "Packaged": "2020-08-26 17:46:45.898451 UTC; edd",
+        "Repository": "RSPM",
+        "Date/Publication": "2020-08-27 11:40:21 UTC",
+        "Built": "R 4.3.0; x86_64-pc-linux-gnu; 2023-07-09 23:38:31 UTC; unix"
       }
     },
     "base64enc": {
@@ -1585,6 +1636,33 @@
         "Built": "R 4.3.0; ; 2023-11-28 16:06:12 UTC; unix"
       }
     },
+    "shinyWidgets": {
+      "Source": "CRAN",
+      "Repository": "https://packagemanager.posit.co/cran/2023-12-30",
+      "description": {
+        "Package": "shinyWidgets",
+        "Title": "Custom Inputs Widgets for Shiny",
+        "Version": "0.8.0",
+        "Authors@R": "c(\n  person(\"Victor\", \"Perrier\", email = \"victor.perrier@dreamrs.fr\", role = c(\"aut\", \"cre\", \"cph\")),\n  person(\"Fanny\", \"Meyer\", role = \"aut\"),\n  person(\"David\", \"Granjon\", role = \"aut\"),\n  person(\"Ian\", \"Fellows\", role = \"ctb\", comment = \"Methods for mutating vertical tabs & updateMultiInput\"),\n  person(\"Wil\", \"Davis\", role = \"ctb\", comment = \"numericRangeInput function\"),\n  person(\"Spencer\", \"Matthews\", role = \"ctb\", comment = \"autoNumeric methods\"),\n  person(family = \"JavaScript and CSS libraries authors\", role = c(\"ctb\", \"cph\"), comment = \"All authors are listed in LICENSE.md\")\n  )",
+        "Description": "Collection of custom input controls and user interface components for 'Shiny' applications. \n  Give your applications a unique and colorful style !",
+        "URL": "https://github.com/dreamRs/shinyWidgets,\nhttps://dreamrs.github.io/shinyWidgets/",
+        "BugReports": "https://github.com/dreamRs/shinyWidgets/issues",
+        "License": "GPL-3",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.2.3",
+        "Depends": "R (>= 3.1.0)",
+        "Imports": "anytime, bslib, sass, shiny (>= 1.6.0), htmltools (>= 0.5.1),\njsonlite, grDevices, rlang",
+        "Suggests": "testthat, covr, ggplot2, DT, scales, shinydashboard,\nshinydashboardPlus",
+        "NeedsCompilation": "no",
+        "Packaged": "2023-08-30 14:04:56 UTC; victorp",
+        "Author": "Victor Perrier [aut, cre, cph],\n  Fanny Meyer [aut],\n  David Granjon [aut],\n  Ian Fellows [ctb] (Methods for mutating vertical tabs &\n    updateMultiInput),\n  Wil Davis [ctb] (numericRangeInput function),\n  Spencer Matthews [ctb] (autoNumeric methods),\n  JavaScript and CSS libraries authors [ctb, cph] (All authors are listed\n    in LICENSE.md)",
+        "Maintainer": "Victor Perrier <victor.perrier@dreamrs.fr>",
+        "Repository": "RSPM",
+        "Date/Publication": "2023-08-30 15:00:02 UTC",
+        "Built": "R 4.3.0; ; 2023-08-31 11:12:02 UTC; unix"
+      }
+    },
     "sourcetools": {
       "Source": "CRAN",
       "Repository": "https://packagemanager.posit.co/cran/2023-12-30",
@@ -1869,7 +1947,7 @@
   },
   "files": {
     "app.R": {
-      "checksum": "2760ab66874f64930758f0405743fd09"
+      "checksum": "976479f443806d1afaabe96aab9b7317"
     },
     "config.yml": {
       "checksum": "1964cb07ded0fd83482f227c683e79e1"
