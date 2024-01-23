@@ -151,7 +151,7 @@ Activate the license
 sudo /opt/rstudio-connect/bin/license-manager activate <LICENSE-KEY>
 ```
 
-Configure the config file: 
+Configure: 
 
 `sudo nano /etc/rstudio-connect/rstudio-connect.gcfg`
 
