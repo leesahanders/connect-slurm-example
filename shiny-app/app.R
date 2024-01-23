@@ -13,6 +13,7 @@ library(shiny)
 library(shinyWidgets) # https://dreamrs.github.io/shinyWidgets/reference/progress-bar.html
 library(progress) # https://stackoverflow.com/questions/5423760/how-do-you-create-a-progress-bar-when-using-the-foreach-function-in-r?rq=4 and https://github.com/r-lib/progress/issues/97
 
+Sys.setenv(PATH=paste0("/opt/slurm/bin:",Sys.getenv("PATH")))
 
 plot_it <- function(res, bins) {
   # Plot routine
