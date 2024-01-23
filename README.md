@@ -47,11 +47,16 @@ Bias towards recommending clustermq as it has less overhead
 - When done the results are returned
 - Use different parallelization tools: clustermq, future, batchtools, crew.cluster
 
-# Examples 
+# R Examples 
 
 ## shiny-app 
 
 ## quarto-report 
 
+# TODO
 
+- Example that works on Workbench 
+- Example that works with Connect deployed on the slurm head node 
+- Example that works with Connect deployed on a separate server
+- progress bar
 
