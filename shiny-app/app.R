@@ -10,6 +10,8 @@
 #
 
 library(shiny)
+library(shinyWidgets) # https://dreamrs.github.io/shinyWidgets/reference/progress-bar.html
+library(progress) # https://stackoverflow.com/questions/5423760/how-do-you-create-a-progress-bar-when-using-the-foreach-function-in-r?rq=4 and https://github.com/r-lib/progress/issues/97
 
 
 plot_it <- function(res, bins) {
@@ -81,6 +83,8 @@ compute <- function(trials, cores, session) {
       result1 <-
         glm(x[ind, 2] ~ x[ind, 1], family = binomial(logit))
       coefficients(result1)
+      #incProgress(1 / trials) #addition?
+      # >>> SOME PROGRESS BAR HERE <<<   
     }
   )
 }
