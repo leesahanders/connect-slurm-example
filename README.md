@@ -1,9 +1,11 @@
 # connect-slurm-example
 
-A subset of customers request Connect with Slurm. 
+A subset of customers request options for leveraging Connect with Slurm. 
 
 - What do customers want for an integration with Slurm for the Connect product? (Shiny apps, remote submitting, replacing k8s with slurm, etc)
 - What are the current ways to achieve what customers are wanting?
+
+Internal reference: <https://positpbc.atlassian.net/wiki/spaces/SE/pages/544538869/2023-12-19+Connect+with+Slurm> 
 
 # Requirements
 
@@ -44,7 +46,6 @@ Bias towards recommending clustermq as it has less overhead
 - Job is launched from Connect into slurm 
 - When done the results are returned
 - Use different parallelization tools: clustermq, future, batchtools, crew.cluster
-
 
 # Examples 
 
