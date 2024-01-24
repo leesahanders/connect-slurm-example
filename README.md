@@ -9,9 +9,10 @@
 ## TODO
 
 - [x] Example that works on Workbench 
-- [] Example that works with Connect deployed on the slurm head node 
+- [x] Example that works with Connect deployed on the slurm head node 
 - [] Example that works with Connect deployed on a separate server
-- [] progress bar
+- [] Example declaring a specific singularity container to use
+- [] Add ALL the progress bars! (What even is a progress bar when parallelized??)
 
 ## Requirements
 
@@ -104,6 +105,7 @@ Get your operating system version:
 
 ```bash
 lsb_release -a
+cat /etc/os-release
 ```
 
 Check that R is installed: 
@@ -275,6 +277,18 @@ Restarting Workbench: After making a change manually to files on the server, bri
 
 
 ## Slurm interaction 
+
+Show slurm node status: `just server-slurm-sinfo`
+
+Show slurm queue: `just server-slurm-squeue`
+
+There is a queue limit based on the resources on the server (in experience roughly 2 open sessions, but if session size is reduced more sessions can be opened) so close open sessions as needed to create new ones.
+
+Active processes:
+
+```
+ps -ufxa 
+```
 
 ```
 Scontrol show job 38 
