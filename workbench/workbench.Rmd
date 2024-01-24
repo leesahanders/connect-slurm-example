@@ -8,10 +8,14 @@ date: "2024-01-23"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
+Example from: <https://stackoverflow.com/questions/62134030/using-clustermq-r-package-as-a-parallel-backend-for-foreach> 
 
 ```{r}
-
+library(foreach)
+(n_cores <- parallel::detectCores())
+clustermq::register_dopar_cmq(n_jobs = n_cores)
+options(clustermq.scheduler = "multicore")
+system.time(foreach(i = seq_len(n_cores)) %dopar% Sys.sleep(5))
 ```
 
 

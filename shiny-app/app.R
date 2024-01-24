@@ -12,6 +12,7 @@
 library(shiny)
 library(shinyWidgets) # https://dreamrs.github.io/shinyWidgets/reference/progress-bar.html
 library(progress) # https://stackoverflow.com/questions/5423760/how-do-you-create-a-progress-bar-when-using-the-foreach-function-in-r?rq=4 and https://github.com/r-lib/progress/issues/97
+library(spsComps) # https://stackoverflow.com/questions/30474538/possible-to-show-console-messages-written-with-message-in-a-shiny-ui
 
 Sys.setenv(PATH=paste0("/opt/slurm/bin:",Sys.getenv("PATH")))
 
@@ -60,8 +61,10 @@ compute <- function(trials, cores, session) {
   register_dopar_cmq(
     n_jobs = cores,
     memory = 1024,
-    log_worker = FALSE,
-    export = list(session=session) #,
+    log_worker = TRUE, # FALSE
+    export = list(session=session),
+    template=list(log_file = "clmq.%a")
+    # template=list(log_file = "/tmp/clmq.%a")
     #chunk_size = trials / 5 / cores
   )
   
@@ -84,7 +87,6 @@ compute <- function(trials, cores, session) {
       result1 <-
         glm(x[ind, 2] ~ x[ind, 1], family = binomial(logit))
       coefficients(result1)
-      #incProgress(1 / trials) #addition?
       # >>> SOME PROGRESS BAR HERE <<<   
     }
   )
@@ -154,15 +156,33 @@ ui <- fluidPage(
         min = 1,
         max = 200,
         value = 1
-      )
+      ),
+      
+      # Show a text field for troubleshooting
+      verbatimTextOutput("urlText")
     ),
     # Show a plot of the generated distribution
     mainPanel(plotOutput("distPlot"))
+  
   )
 )
 
 # Define server logic required to draw a histogram
 server <- function(input, output, session) {
+  output$urlText <- renderText({
+    paste(sep = "",
+          # "protocol: ", session$clientData$url_protocol, "\n",
+          # "hostname: ", session$clientData$url_hostname, "\n",
+          # "pathname: ", session$clientData$url_pathname, "\n",
+          # "port: ",     session$clientData$url_port,     "\n",
+          # "search: ",   session$clientData$url_search,   "\n",
+          # "sys info user: ",   Sys.info()[["user"]],   "\n",
+          # "session clientdata user: ",   session$clientData$user,   "\n",
+          "\n", "session user: ",   session$user,   "\n",
+          "\n", "working directory: ",   getwd(),   "\n"
+    )
+  })
+  
   # Initialize with dummy value
   res <- 1
   
@@ -187,6 +207,7 @@ server <- function(input, output, session) {
   output$distPlot <- renderPlot({
     plot_it(rv$res, input$bins)
   })
+  
 }
 
 # Run the application
