@@ -242,10 +242,10 @@ Access your Connect instance at: `<your ip address>:3939`
 
 Slurm 
 
-- Show slurm node status: just server-slurm-sinfo
-- Show slurm queue: just server-slurm-squeue
+- Show slurm node status: `sudo su - slurm -c sinfo`
+- Show slurm queue: `sudo su - slurm -c squeue`
 - There is a queue limit based on the resources on the server (in experience roughly 2 open sessions, but if session size is reduced more sessions can be opened) so close open sessions as needed to create new ones.
-- Reference: <https://mschubert.github.io/clustermq/articles/userguide.html#debugging-workers> 
+- Reference for troubleshooting: <https://mschubert.github.io/clustermq/articles/userguide.html#debugging-workers> 
 
 Python
 
