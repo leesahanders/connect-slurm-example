@@ -232,6 +232,10 @@ Verify the installation
 sudo systemctl status rstudio-connect 2>&1 | tee status.txt
 ```
 
+Add users to rstudio-connect group so they can be used for running content (with the permissions to submit jobs): 
+
+Add account to rstudio-server group: `sudo usermod -aG rstudio-connect posit0001`
+
 Access your Connect instance at: `<your ip address>:3939`
 
 ### Troubleshooting
