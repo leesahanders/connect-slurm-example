@@ -50,5 +50,5 @@ venv
 
 /.luarc.json
 
-michaels-penguins-hpc/
-workbench/course-material/
+#michaels-penguins-hpc/
+#workbench/course-material/

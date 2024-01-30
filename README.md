@@ -290,6 +290,8 @@ Restarting Workbench: After making a change manually to files on the server, bri
 - Reset the cluster (run on any one node): sudo rstudio-server reset-cluster
 - Debugging: sudo rstudio-server list-nodes
 
+Shiny app temp storage 
+Each process started by Posit Connect is given its own unique temporary directory. These directories are created under Server.TempDir/connect-workspaces. The default value for Server.TempDir is obtained by first checking the TMPDIR environment variable for a path and falls back to /tmp otherwise. i.e., it's using /tmp/connect-workspaces by default, but it can be configured to an alternative location by setting TempDir=/newlocation in the [Server] section of your /etc/rstudio-connect/studio-connect.gcfg configuration file.
 
 ## Slurm interaction 
 
@@ -327,7 +329,7 @@ From workbench:
 env | grep SINGU
 ```
 
-## What happens when a piece of Connect content is interrupted? 
+## What happens when a piece of Connect content is interrupted while the slurm job is running? 
 
 ## Progress bars
 

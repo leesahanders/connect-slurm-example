@@ -1,0 +1,58 @@
+---
+title: "R Markdown Debugging Demo"
+output: html_document
+date: "`r Sys.Date()`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+f <- function(x) {
+  if (x < 0) {
+    stop("x should not be < 0")
+  } else {
+    return(2 * x)
+  }
+}
+
+g <- function(x) {
+  if (x < 0) {
+    browser()
+  } else {
+    return(2 * x)
+  }
+}
+```
+
+### This works
+```{r}
+f(1)
+```
+
+### Interactive debugging
+
+When rendering the document with `rmarkdown::render()`, the render process will stop at the `browser()` statement as defined in function `g()`. By default, output gets captured by RMarkdown, so no output is shown on the console. To enable debugging as usual, call `sink()`.
+
+To execute the blocks below, replace `{}` with `{r}`:
+
+```{}
+g(-1)
+```
+
+### Interactive debugging with call stack
+
+Setting the error function to a function that calls `sink()`, prints out the call stack and invokes `recover()` can be a powerful combination to immediately get information on the location of the error and interactively inspect the issue. See https://rlang.r-lib.org/reference/trace_back.html for details.
+
+```{r}
+options(error = function() {
+  sink()
+  print(rlang::trace_back(bottom = sys.frame(-1)))
+  recover()
+})
+
+f(-1)
+```
