@@ -47,6 +47,14 @@ Recommended packages:
 
 Bias towards recommending clustermq as it has less overhead
 
+Example infrastructure: 
+
+- <https://github.com/sol-eng/aws-parallelcluster-rsw-ha> 
+- <https://github.com/sol-eng/singularity-rstudio>
+- <https://github.com/sol-eng/pulumi-workbench>
+- <https://github.com/sol-eng/slurm-docker-cluster>
+- <https://github.com/lagerratrobe/slurmathon>
+
 ## Mental model: 
 
 - Set appropriate permissions, install requirements
